@@ -68,6 +68,27 @@
             background-color: #e63e47;
             transform: scale(1.1);
         }
+
+        /* Powiadomienie */
+        .notification {
+            background-color: #ff4f5b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            font-size: 1.2em;
+        }
+
+        .notification.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -75,11 +96,20 @@
     <div class="heart">❤️</div>
     <div class="message">Oliwka <3</div>
 
-    <button class="button" onclick="showAlert()">buziaczki!</button>
+    <button class="button" onclick="showNotification()">buziaczki!</button>
+
+    <!-- Powiadomienie -->
+    <div id="notification" class="notification">
+        Oliwka, jesteś supeeer! ❤️
+    </div>
 
     <script>
-        function showAlert() {
-            alert("Oliwka, jesteś supeeeer! ❤️");
+        function showNotification() {
+            var notification = document.getElementById('notification');
+            notification.classList.add('show');
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 3000); // Powiadomienie zniknie po 3 sekundach
         }
     </script>
 
